@@ -21,6 +21,10 @@ export default class About extends Component {
                 <Layout>
                     <h2>This is the about page</h2>
                     <h3>My Github Id is {this.props.user.login}</h3> 
+                    <img 
+                        src={this.props.user.avatar_url}
+                        alt="BrijeshBumrela"
+                    />
                 </Layout>    
             </React.Fragment>
         )
