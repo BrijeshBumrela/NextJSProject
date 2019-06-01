@@ -1,12 +1,8 @@
 import Link from 'next/link';
-import Head from 'next/head';
 import Router from 'next/router';
 import Nprogress from 'nprogress';
 
-Router.onRouteChangeStart = url => {
-    console.log(url);
-    Nprogress.start();
-}
+Router.onRouteChangeStart = url => Nprogress.start();
 
 Router.onRouteChangeComplete = () => Nprogress.done();
 
@@ -14,21 +10,14 @@ Router.onRouteChangeError = () => Nprogress.done();
 
 const Layout = (props) => (
     <div className="root">
-        <Head>
-            <title>From Layout</title>
-            <link 
-                rel="stylesheet" 
-                href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" 
-            />
-        </Head>
         <header>
-            <Link className="header-link" href="/">
+            <Link href="/">
                 <a className="header-link-a">Home</a>
             </Link>
-            <Link className="header-link" href="/about">
+            <Link href="/about">
                 <a className="header-link-a">About</a>
             </Link>
-            <Link className="header-link" href="/hireme">
+            <Link href="/hireme">
                 <a className="header-link-a">Hire Me</a>
             </Link>
         </header>

@@ -6,7 +6,8 @@ import Head from 'next/head';
 const Index = (props) => (
     <div>
         <Head>
-            <title>Head</title>
+            <title>Landing Page</title>
+            <meta name="Landing Page" description="Landing page of the portfolio"></meta>
         </Head>
         <Layout>
         Hi There 
