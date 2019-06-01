@@ -2,16 +2,25 @@ import Layout from '../components/Layout.js';
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import { Component } from 'react';
+import Error from './_error';
 
 export default class About extends Component {
 
     static async getInitialProps() {
         const res = await fetch('https://api.github.com/users/BrijeshBumrela');
+        const statusCode = res.status > 200 ? res.status : false;
         const data = await res.json();
-        return { user: data }
+        return { user: data, statusCode }
     }
 
     render() {
+
+        const { user, statusCode } = this.props;
+
+        if (statusCode) {
+            return <Error />
+        }
+
         return (
             <React.Fragment>
                 <Head>
@@ -20,9 +29,9 @@ export default class About extends Component {
                 </Head>
                 <Layout>
                     <h2>This is the about page</h2>
-                    <h3>My Github Id is {this.props.user.login}</h3> 
+                    <h3>My Github Id is {user.login}</h3> 
                     <img 
-                        src={this.props.user.avatar_url}
+                        src={user.avatar_url}
                         alt="BrijeshBumrela"
                     />
                 </Layout>    
