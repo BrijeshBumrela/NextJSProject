@@ -20,6 +20,9 @@ const Layout = (props) => (
             <Link href="/hireme">
                 <a className="header-link-a">Hire Me</a>
             </Link>
+            <Link href="/blog">
+                <a className="header-link-a">Blog</a>
+            </Link>
         </header>
         <div className="main-content">
             {props.children}
