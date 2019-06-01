@@ -1,0 +1,29 @@
+{
+  "name": "NextJSProject",
+  "version": "1.0.0",
+  "description": "Beginner Project Using Next JS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrijeshBumrela/NextJSProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrijeshBumrela/NextJSProject/issues"
+  },
+  "homepage": "https://github.com/BrijeshBumrela/NextJSProject#readme",
+  "dependencies": {
+    "next": "^8.1.0",
+    "node-fetch": "^2.6.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
