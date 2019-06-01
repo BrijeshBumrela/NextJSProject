@@ -21,11 +21,11 @@ const Layout = (props) => (
                 <a className="header-link-a">Hire Me</a>
             </Link>
         </header>
-        {props.children}
+        <div className="main-content">
+            {props.children}
+        </div>
         <footer>&copy; {new Date().getFullYear()}</footer>
     
-
-
         <style jsx>{`
         .root {
             display: flex;
@@ -50,15 +50,12 @@ const Layout = (props) => (
             color: lightgrey;
         };
         footer {
-            padding: 1em;
+            padding: 1rem;
+            padding-top: 2rem;
         };
-        `}</style>
-        <style global jsx>{`
-            body {
-                margin: 0;
-                font-size: 110%;
-                background: #f0f0f0;
-            }
+        .main-content {
+            margin: 2rem;
+        }
         `}</style>
     </div>
 )
