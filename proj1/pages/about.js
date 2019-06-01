@@ -18,7 +18,7 @@ export default class About extends Component {
                     <title>About Me</title>
                     <meta name="About Page" description="Page showcasing about myself"></meta>
                 </Head>
-                <Layout >
+                <Layout>
                     <h2>This is the about page</h2>
                     <h3>My Github Id is {this.props.user.login}</h3> 
                 </Layout>    
