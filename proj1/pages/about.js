@@ -2,12 +2,12 @@ import Layout from '../components/Layout.js';
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import { Component } from 'react';
-import Error from './_error';
+import Error from './_error/index';
 
 export default class About extends Component {
 
     static async getInitialProps() {
-        const res = await fetch('https://api.github.com/users/BrijeshBumrela');
+        const res = await fetch('https://api.github.com/uers/BrijeshBumrela');
         const statusCode = res.status > 200 ? res.status : false;
         const data = await res.json();
         return { user: data, statusCode }

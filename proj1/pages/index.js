@@ -1,8 +1,6 @@
 import Layout from '../components/Layout.js';
 import Head from 'next/head';
 
-
-
 const Index = (props) => (
     <div>
         <Head>
