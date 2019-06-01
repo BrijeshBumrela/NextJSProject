@@ -5,7 +5,7 @@ import fetch from 'isomorphic-unfetch';
 import Layout from '../../components/Layout.js';
 import Error from '../_error/index';
 
-import moduleCSS from './about.css';
+// import moduleCSS from './about.css';
 
 export default class About extends Component {
 
@@ -31,7 +31,7 @@ export default class About extends Component {
                     <h2>This is the about page</h2>
                     <h3>My Github Id is {user.login}</h3> 
                     <img 
-                        className={moduleCSS.imageSize}
+                        // className={moduleCSS.imageSize}
                         src={user.avatar_url}
                         alt="BrijeshBumrela"
                     />
