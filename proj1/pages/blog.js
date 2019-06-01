@@ -7,10 +7,10 @@ import Layout from '../components/Layout';
 
 const PostLink = ({ title, id }) => (
     <li>
-        <Link href={`/post?title=${id}`}>
+        <Link as={`/post/${title.split(' ').join('-')}`} href={`/post?title=${id}`}>
             <a>Post One About {title}</a>
         </Link>
-    </li>
+    </li>   
 )
 
 class Blog extends Component {
