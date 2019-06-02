@@ -18,7 +18,7 @@ const COOKIE_OPTIONS = {
 
 const authenticate = async (email, password) => {
     const { data } = await axios.get('https://jsonplaceholder.typicode.com/users');
-    return data.find(user => user.email === email && user.password === password);
+    return data.find(user => user.email === email && user.website === password);
 }
 
 app.prepare().then(() => {
@@ -29,12 +29,13 @@ app.prepare().then(() => {
     server.post('/api/login',async (req, res, next) => {
         const { email, password } = req.body;
         const userData = await authenticate(email, password);
+        console.log(userData);
         if (!userData) {
             return res.status(403).send()
         }
         const user = {
-            name: user.name,
-            email: user.email
+            name: userData.name,
+            email: userData.email
         }
         res.cookie('token', user, COOKIE_OPTIONS);
         res.json(user);
