@@ -29,7 +29,6 @@ app.prepare().then(() => {
     server.post('/api/login',async (req, res, next) => {
         const { email, password } = req.body;
         const userData = await authenticate(email, password);
-        console.log(userData);
         if (!userData) {
             return res.status(403).send()
         }
