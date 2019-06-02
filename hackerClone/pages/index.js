@@ -2,6 +2,7 @@ import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
 
 import StoryList from '../components/storyList';
+import Layout from '../components/Layout';
 
 class Index extends React.Component {
     
@@ -24,7 +25,9 @@ class Index extends React.Component {
         }
 
         return (
-            <StoryList stories={stories}/>
+            <Layout title="HackerNext">
+                <StoryList stories={stories}/>
+            </Layout>
         )
     }
 }
