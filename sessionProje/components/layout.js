@@ -19,6 +19,7 @@ const Layout = ({ children }) => (
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
+                margin-bottom: 20px;
             }
         `}</style>
     </div>
