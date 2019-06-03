@@ -1,22 +1,39 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const next = require('next');
 
-const MONGODB_URI ='mongodb://localhost:27018/shop';
+const dev = process.env.NODE_ENV !== 'production';
+const server = next({ dev });
+const handle = server.getRequestHandler();
 
-const app = express();
 
-const adminRoutes = require('./api/routes/admin');
+const MONGODB_URI ='mongodb://localhost:27018/cookie';
 
-app.use(bodyParser.urlencoded({ extended: false }));
+server
+    .prepare()
+    .then(() => {
+        const app = express();
 
-app.use(adminRoutes);
+        const adminRoutes = require('./api/routes/admin');
 
-mongoose
-    .connect(MONGODB_URI)
-    .then(result => {
-        app.listen(3000);
+        app.use(bodyParser.urlencoded({ extended: false }));
+        
+        app.use(adminRoutes);
+        
+        app.get('*', (req, res) => {
+            return handle(req, res);
+        })
+
+        mongoose
+            .connect(MONGODB_URI, { useNewUrlParser: true })
+            .then(result => {
+                app.listen(3000);
+                console.log('connected to database');
+            })
+            .catch(err => {
+                console.log(err);
+            })
     })
-    .catch(err => {
-        console.log(err);
-    })
+
+
