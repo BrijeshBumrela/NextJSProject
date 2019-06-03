@@ -33,14 +33,18 @@ server
                 store: store
             })
         )
+
+        app.use((req, res, next) => {
+            if (!req.session.user) {
+              return next();
+            }
+            req.user = req.session.user;
+        });
         
         app.use((req, res, next) => {
-            if (!req.session.user) return next();
-            else {
-                console.log('user ahe re baa');
-                next();
-            }
-        })
+            res.locals.isAuthenticated = req.session.isLoggedIn;
+            next();
+        });
 
         app.use(adminRoutes);
         
