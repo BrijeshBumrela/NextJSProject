@@ -30,7 +30,7 @@ app.prepare().then(() => {
         const { email, password } = req.body;
         const userData = await authenticate(email, password);
         if (!userData) {
-            return res.send(403, 'Invalid Email or Password')
+            return res.status(403).send('Invalid Email or Password')
         }
         const user = {
             name: userData.name,
