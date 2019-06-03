@@ -30,7 +30,7 @@ app.prepare().then(() => {
         const { email, password } = req.body;
         const userData = await authenticate(email, password);
         if (!userData) {
-            return res.status(403).send()
+            return res.send(403, 'Invalid Email or Password')
         }
         const user = {
             name: userData.name,
@@ -53,8 +53,6 @@ app.prepare().then(() => {
             return res.status(200).json({ user: userProfile });
         }
         res.sendStatus(404);
-
-
     })
 
 
