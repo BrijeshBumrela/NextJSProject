@@ -10,21 +10,23 @@ const dev = process.env.NODE_ENV !== 'production';
 const server = next({ dev });
 const handle = server.getRequestHandler();
 
+const adminRoutes = require('./api/routes/admin');
 
 const MONGODB_URI ='mongodb://localhost:27018/practice';
+
 
 server
     .prepare()
     .then(() => {
         const app = express();
+        app.use(bodyParser.urlencoded({ extended: false }));
+        app.use(bodyParser.json());
         const store = new mongoDBStore({
             uri: MONGODB_URI,
             collection: 'sessions'
         });
 
-        const adminRoutes = require('./api/routes/admin');
 
-        app.use(bodyParser.urlencoded({ extended: false }));
         app.use(
             session({
                 secret: 'my secret',
@@ -35,14 +37,16 @@ server
         )
 
         app.use((req, res, next) => {
+            console.log(req.session);
             if (!req.session.user) {
               return next();
             }
             req.user = req.session.user;
+            next();
         });
         
         app.use((req, res, next) => {
-            res.locals.isAuthenticated = req.session.isLoggedIn;
+            //res.locals.isAuthenticated = req.session.isLoggedIn;
             next();
         });
 
