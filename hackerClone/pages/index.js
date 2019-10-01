@@ -24,7 +24,7 @@ class Index extends React.Component {
 
         const { stories, page } = this.props;
         if (stories.length === 0) {
-            return <Error statusCode="503" />
+            return <Error statusCode="404" />
         }
         return (
             <Layout title="HackerNext">
